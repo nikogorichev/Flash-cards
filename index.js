@@ -13,4 +13,18 @@ async function quest() {
       theme = await fs.readFile(`./topics/${arr[i]}`, 'utf-8')
     }
   }
+  let count = 0
+  let sub = theme.split('\n').filter(el => el !== '')
+  for (let i = 0; i < sub.length; i += 2) {
+    console.log(sub[i])
+    let answer = readline.question('')
+    if (answer.toLowerCase() === sub[i + 1].toLowerCase()) {
+      console.log('\n👍\n')
+      count++
+    } else {
+      console.log('\n🤮\n');
+      count--
+    }
+  } console.log(`Тест завершен! Ваш счет: ${count}`)
 }
+quest()
